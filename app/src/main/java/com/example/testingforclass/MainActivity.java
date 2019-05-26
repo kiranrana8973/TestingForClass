@@ -11,9 +11,8 @@ import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
 
-    private EditText etFirst,etSecond;
-    private Button btnSum;
-
+    private EditText etFirst, etSecond;
+    private Button btnSum,btnSubtract,btnDivide;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,20 +28,19 @@ public class MainActivity extends AppCompatActivity {
                 Add();
             }
         });
-
     }
-
     private void Add() {
 
         float first = Float.parseFloat(etFirst.getText().toString());
         float second = Float.parseFloat(etSecond.getText().toString());
-
         Arithmetic arithmetic = new Arithmetic();
 
-        float result = arithmetic.add(first,second);
+        float result = arithmetic.add(first, second);
 
-        Intent intent = new Intent(MainActivity.this,OutputActivity.class);
-        intent.putExtra("result",result);
+        Intent intent = new Intent(MainActivity.this, OutputActivity.class);
+        intent.putExtra("result", result);
         startActivity(intent);
     }
 }
+
+
