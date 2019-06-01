@@ -1,11 +1,7 @@
 package com.example.testingforclass;
-import androidx.test.espresso.Espresso;
+import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.filters.LargeTest;
 import androidx.test.rule.ActivityTestRule;
-import androidx.test.runner.AndroidJUnit4;
-
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -21,7 +17,8 @@ import static androidx.test.espresso.matcher.ViewMatchers.withInputType;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
 import static org.junit.Assert.*;
 
-
+@RunWith(AndroidJUnit4.class)
+@LargeTest
 public class SimpleActivityTest {
 
     @Rule
@@ -48,8 +45,20 @@ public class SimpleActivityTest {
         onView(withId(R.id.tvDisplay))
                 .check(matches(withText(mText)));
 
-//        onView(withId(R.id.tvDisplay))
-//                .check(matches(isDisplayed()));
+    }
+
+
+    @Test
+    public void testWeatherSomeTextIsDisplayed()
+    {
+        onView(withId(R.id.etText))
+                .perform(typeText(mText));
+
+        onView(withId(R.id.btnClick))
+                .perform(click());
+
+        onView(withId(R.id.tvDisplay))
+                .check(matches(isDisplayed()));
+
     }
 }
-
